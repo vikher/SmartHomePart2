@@ -2,7 +2,7 @@
 """
 Created on Thu Jan 28 00:44:25 2021
 
-@author: chakati
+@author: victor
 """
 import cv2
 import os
@@ -137,9 +137,9 @@ for file in os.listdir(path_to_train_data):
 video_locations = ["test/"]
 test_count = 0
 for video_location in video_locations:
-    with open('results.csv', 'w', newline='') as results_file:
+    with open('Results.csv', 'w', newline='') as results_file:
         fieldnames = [
-            'Gesture_Video_File_Name', 'Gesture_Name',
+            'Gesture_Name',
             'Output_Label']
         train_data_writer = csv.DictWriter(results_file, fieldnames=fieldnames)
         train_data_writer.writeheader()
@@ -151,6 +151,5 @@ for video_location in video_locations:
                 test_count = test_count + 1
 
                 train_data_writer.writerow({
-                                             'Gesture_Video_File_Name': test_file,
                                              'Gesture_Name': recognized_gesture_detail.gesture_name,
                                             'Output_Label': recognized_gesture_detail.output_label})
