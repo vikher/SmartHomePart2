@@ -132,17 +132,16 @@ for file in os.listdir(path_to_train_data):
 # =============================================================================
 video_locations = ["test/"]
 test_count = 0
-for video_location in video_locations:
-    with open('Results.csv', 'w', newline='') as results_file:
-        fieldnames = [
-            'Output_Label']
-        train_data_writer = csv.DictWriter(results_file, fieldnames=fieldnames)
 
+with open('Results.csv', 'w', newline='') as results_file:
+    train_data_writer = csv.writer(results_file)
+
+    for video_location in video_locations:
         for test_file in os.listdir(video_location):
             if not test_file.startswith('.') and not test_file.startswith('frames') \
                     and not test_file.startswith('results'):
                 recognized_gesture_detail = determine_gesture(video_location, test_file, test_count)
-                test_count = test_count + 1
+                test_count += 1
 
-                train_data_writer.writerow({
-                                            'Output_Label': recognized_gesture_detail.output_label})
+                train_data_writer.writerow([recognized_gesture_detail.output_label])
+
