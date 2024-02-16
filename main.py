@@ -142,7 +142,6 @@ for video_location in video_locations:
             'Gesture_Name',
             'Output_Label']
         train_data_writer = csv.DictWriter(results_file, fieldnames=fieldnames)
-        train_data_writer.writeheader()
 
         for test_file in os.listdir(video_location):
             if not test_file.startswith('.') and not test_file.startswith('frames') \
