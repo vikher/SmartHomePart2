@@ -145,3 +145,11 @@ with open('Results.csv', 'w', newline='') as results_file:
 
                 train_data_writer.writerow([recognized_gesture_detail.output_label])
 
+                # Check if the limit of 10 rows is reached
+                if test_count >= 45:
+                    break
+
+        # Check if the limit of 10 rows is reached
+        if test_count >= 45:
+            break
+
